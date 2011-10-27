@@ -15,5 +15,13 @@ sample = (array, number=1) ->
     random_sample.push(value)
   random_sample
 
+randrange = (stop, start, step=1) ->
+  if start
+    [stop, start] = [start, stop]
+  else
+    start = 0
+  (num for num in [start..stop] by step)
+
 exports.choice = choice
 exports.sample = sample
+exports.randrange = randrange
