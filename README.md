@@ -11,5 +11,5 @@ random.sample(array)     # Single random sample number.
 
 random.sample(array, 2)  # Array of two random numbers.
 
-random.random(array)     # Single random sample number.
+random.choice(array)     # Single random sample number.
 ```

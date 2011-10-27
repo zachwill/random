@@ -4,7 +4,7 @@ A module inspired by Python's Standard Library random module.
 http://docs.python.org/library/random.html
 """
 
-exports.random = (array) ->
+exports.choice = (array) ->
   array[ Math.floor(Math.random() * array.length)]
 
 exports.sample = (array, number) ->
