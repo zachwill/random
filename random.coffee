@@ -7,9 +7,8 @@ http://docs.python.org/library/random.html
 choice = (array) ->
   array[ Math.floor(Math.random() * array.length)]
 
-sample = (array, number) ->
+sample = (array, number=1) ->
   length = array.length
-  number = number or 1
   random_sample = []
   for num in [0...number]
     value = choice(array)
