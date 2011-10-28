@@ -24,20 +24,20 @@ vows.describe('Random range function').addBatch(
   'when the function is given only one argument':
     topic: ->
       random.randrange(2)
-      'we get back a range of zero to that number': (topic) ->
-        assert.equal topic, [0..2]
+    'we get back a range of zero to that number': (topic) ->
+      assert.deepEqual topic, [0..2]
 
   'when the function is passed two arguments':
     topic: ->
       random.randrange(2, 5)
-      'we get back a range between those two numbers': (topic) ->
-        assert.equal topic, [2..5]
+    'we get back a range between those two numbers': (topic) ->
+      assert.deepEqual topic, [2..5]
 
   'when the function is passed three arguments':
     topic: ->
       random.randrange(2, 8, 2)
-      'the third value acts as a step': (topic) ->
-        assert.equal topic, [2, 4, 6, 8]
+    'the third value acts as a step': (topic) ->
+      assert.deepEqual topic, [2, 4, 6, 8]
 
 ).export(module)
 
@@ -55,6 +55,7 @@ vows.describe('Random sample function').addBatch(
       array = [1..10]
       random.sample(array, 2)
     'we get back an array of that length': (topic) ->
+      assert.isArray topic
       assert.equal topic.length, 2
 
 ).export(module)
@@ -66,7 +67,7 @@ vows.describe('Random shuffle function').addBatch(
       array = [1..10]
       random.shuffle(array)
     'we get back a shuffled array different from the initial one': (topic) ->
-      assert.notEqual topic, [1..10]
+      assert.notDeepEqual topic, [1..10]
     'but that are the same length': (topic) ->
       assert.equal topic.length, [1..10].length
 
@@ -74,7 +75,7 @@ vows.describe('Random shuffle function').addBatch(
     topic: ->
       array = [1]
       random.shuffle(array)
-    'we get back an array of the same length': (topic) ->
-      assert.equal topic.length, [1].length
+    'we get back that element': (topic) ->
+      assert.deepEqual topic, [1]
 
 ).export(module)
