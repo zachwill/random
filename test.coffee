@@ -42,6 +42,16 @@ vows.describe('Random range function').addBatch(
 ).export(module)
 
 
+vows.describe('Random int function').addBatch(
+  'when we call the function with two numbers':
+    topic: ->
+      random.randint(1, 10)
+    'we get back an integer between those two numbers': (topic) ->
+      assert.ok 1 <= topic <= 10
+
+).export(module)
+
+
 vows.describe('Random sample function').addBatch(
   'when we call sample on just an array':
     topic: ->

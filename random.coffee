@@ -17,6 +17,10 @@ randrange = (stop, start, step=1) ->
   choice(array)
 
 
+randint = (start, stop) ->
+  randrange(start, stop)
+
+
 sample = (array, number=1) ->
   length = array.length
   random_sample = []
@@ -37,5 +41,6 @@ shuffle = (array) ->
 
 exports.choice = choice
 exports.randrange = randrange
+exports.randint = randint
 exports.sample = sample
 exports.shuffle = shuffle
