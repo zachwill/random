@@ -13,7 +13,8 @@ randrange = (stop, start, step=1) ->
     [stop, start] = [start, stop]
   else
     start = 0
-  (num for num in [start..stop] by step)
+  array = (num for num in [start..stop] by step)
+  choice(array)
 
 
 sample = (array, number=1) ->

@@ -24,20 +24,20 @@ vows.describe('Random range function').addBatch(
   'when randrange is given only one argument':
     topic: ->
       random.randrange(2)
-    'we get back a range of zero to that number': (topic) ->
-      assert.deepEqual topic, [0..2]
+    'we get back a number between zero and that number': (topic) ->
+      assert.ok 0 <= topic <= 2
 
   'when randrange is passed two arguments':
     topic: ->
       random.randrange(2, 5)
-    'we get back a range between those two numbers': (topic) ->
-      assert.deepEqual topic, [2..5]
+    'we get back a number between those two numbers': (topic) ->
+      assert.ok 2 <= topic <= 5
 
   'when randrange is passed three arguments':
     topic: ->
-      random.randrange(2, 8, 2)
+      random.randrange(2, 6, 2)
     'the third value acts as a step': (topic) ->
-      assert.deepEqual topic, [2, 4, 6, 8]
+      assert.ok topic is 2 or topic is 4 or topic is 6
 
 ).export(module)
 
