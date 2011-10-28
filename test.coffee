@@ -20,6 +20,28 @@ vows.describe('Random choice function').addBatch(
 ).export(module)
 
 
+vows.describe('Random range function').addBatch(
+  'when the function is given only one argument':
+    topic: ->
+      random.randrange(2)
+      'we get back a range of zero to that number': (topic) ->
+        assert.equal topic, [0..2]
+
+  'when the function is passed two arguments':
+    topic: ->
+      random.randrange(2, 5)
+      'we get back a range between those two numbers': (topic) ->
+        assert.equal topic, [2..5]
+
+  'when the function is passed three arguments':
+    topic: ->
+      random.randrange(2, 8, 2)
+      'the third value acts as a step': (topic) ->
+        assert.equal topic, [2, 4, 6, 8]
+
+).export(module)
+
+
 vows.describe('Random sample function').addBatch(
   'when we call the function on just an array':
     topic: ->

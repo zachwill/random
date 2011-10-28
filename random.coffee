@@ -8,6 +8,14 @@ choice = (array) ->
   array[ Math.floor(Math.random() * array.length)]
 
 
+randrange = (stop, start, step=1) ->
+  if start
+    [stop, start] = [start, stop]
+  else
+    start = 0
+  (num for num in [start..stop] by step)
+
+
 sample = (array, number=1) ->
   length = array.length
   random_sample = []
@@ -15,14 +23,6 @@ sample = (array, number=1) ->
     value = choice(array)
     random_sample.push(value)
   random_sample
-
-
-randrange = (stop, start, step=1) ->
-  if start
-    [stop, start] = [start, stop]
-  else
-    start = 0
-  (num for num in [start..stop] by step)
 
 
 shuffle = (array) ->
