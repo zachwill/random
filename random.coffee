@@ -12,8 +12,8 @@ uniform = (a, b) -> a + random() * (b - a)
 
 # Return a randomly selected element from range(`start`, `stop`, `step`).
 randrange = (start, stop, step) ->
-  unless stop? then (random() * start) >> 0
-  else unless step? then random() * (stop - start) >> 0 + start
+  unless stop? then random() * start >> 0
+  else unless step? then (random() * (stop - start) >> 0) + start
   else step * (random() * (stop - start) / step >> 0) + start
 
 # Return a random integer N such that `a` <= N <= `b`.
