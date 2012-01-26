@@ -30,7 +30,7 @@ sample = (population, k=1) ->
 
 # Shuffle the sequence x in place.
 shuffle = (x) ->
-  for i in [x.length - 1..1]
+  for i in [x.length - 1..1] by -1
     j = randrange i + 1
     [x[i], x[j]] = [x[j], x[i]]
   x
