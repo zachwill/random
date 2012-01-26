@@ -26,8 +26,6 @@ choice = (seq) -> seq[randrange seq.length]
 # Return a `k` length list of unique elements chosen from the
 # population `sequence`. Used for random sampling without replacement.
 sample = (population, k=1) ->
-  length = population.length
-  random_sample = []
   (choice population) for i in [0...k]
 
 # Shuffle the sequence x in place.
