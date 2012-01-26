@@ -38,6 +38,7 @@ shuffle = (x) ->
   x
 
 exports.random = random
+exports.uniform = uniform
 exports.randint = randint
 exports.randrange = randrange
 exports.sample = sample
