@@ -12,7 +12,7 @@ uniform = (a, b) -> a + random() * (b - a)
 
 # Return a randomly selected element from range(`start`, `stop`, `step`).
 randrange = (start, stop, step) ->
-  (stop = start; start = 0) unless stop
+  return (random() * start) >> 0 unless stop?
   return start + (random() * (stop - start)) >> 0 unless step
   start + step * (random() * (stop - start) / step) >> 0
 
