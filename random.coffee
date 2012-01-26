@@ -4,16 +4,17 @@ A module inspired by Python's Standard Library random module.
 http://docs.python.org/library/random.html
 """
 
-{floor, random} = Math
+{random} = Math
 
 # Return a random floating point number N such that a <= N <= b for
 # a <= b and b <= N <= a for b < a.
 uniform = (a, b) -> a + random() * (b - a)
 
 # Return a randomly selected element from range(`start`, `stop`, `step`).
-randrange = (start, stop, step=1) ->
+randrange = (start, stop, step) ->
   (stop = start; start = 0) unless stop
-  start + step * floor random() * (stop - start) / step
+  return start + (random() * (stop - start)) >> 0 unless step
+  start + step * (random() * (stop - start) / step) >> 0
 
 # Return a random integer N such that `a` <= N <= `b`.
 randint = (a, b) -> randrange a, b + 1
