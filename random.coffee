@@ -4,43 +4,31 @@ A module inspired by Python's Standard Library random module.
 http://docs.python.org/library/random.html
 """
 
-choice = (array) ->
-  array[ Math.floor(Math.random() * array.length)]
+{floor, random} = Math
 
+randrange = (start, stop, step=1) ->
+  [start, stop] = [0, start] unless stop
+  start + step * floor random() * (1 + stop - start) / step
 
-randrange = (stop, start, step=1) ->
-  if start
-    [stop, start] = [start, stop]
-  else
-    start = 0
-  array = (num for num in [start..stop] by step)
-  choice(array)
+randint = (start, stop) -> randrange start, stop
 
-
-randint = (start, stop) ->
-  randrange(start, stop)
-
+choice = (array) -> array[randrange array.length - 1]
 
 sample = (array, number=1) ->
   length = array.length
   random_sample = []
-  for num in [0...number]
-    value = choice(array)
-    random_sample.push(value)
-  random_sample
-
+  (choice array) for num in [0...number]
 
 shuffle = (array) ->
   length = array.length
-  reversed = [1...length].reverse()
-  for i in reversed
-    j = Math.floor(Math.random() * (i + 1))
+  for i in [length - 1..1]
+    j = randrange(i)
     [array[i], array[j]] = [array[j], array[i]]
   array
 
-
-exports.choice = choice
-exports.randrange = randrange
+exports.random = random
 exports.randint = randint
+exports.randrange = randrange
 exports.sample = sample
+exports.choice = choice
 exports.shuffle = shuffle
