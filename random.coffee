@@ -8,8 +8,7 @@ http://docs.python.org/library/random.html
 
 # Return a random floating point number N such that a <= N <= b for
 # a <= b and b <= N <= a for b < a.
-uniform = (a, b) ->
-  a + random() * (b - a)
+uniform = (a, b) -> a + random() * (b - a)
 
 # Return a randomly selected element from range(`start`, `stop`, `step`).
 randrange = (start, stop, step=1) ->
@@ -17,8 +16,7 @@ randrange = (start, stop, step=1) ->
   start + step * floor random() * (stop - start) / step
 
 # Return a random integer N such that `a` <= N <= `b`.
-randint = (a, b) ->
-  randrange a, b + 1
+randint = (a, b) -> randrange a, b + 1
 
 # Return a random element from the non-empty sequence `seq`.
 choice = (seq) -> seq[randrange seq.length]
