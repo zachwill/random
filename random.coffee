@@ -12,7 +12,7 @@ uniform = (a, b) -> a + random() * (b - a)
 
 # Return a randomly selected element from range(`start`, `stop`, `step`).
 randrange = (start, stop, step=1) ->
-  [start, stop] = [0, start] unless stop
+  (stop = start; start = 0) unless stop
   start + step * floor random() * (stop - start) / step
 
 # Return a random integer N such that `a` <= N <= `b`.
@@ -29,7 +29,7 @@ sample = (population, k=1) -> (choice population) for i in [0...k]
 shuffle = (x) ->
   for i in [x.length - 1..1] by -1
     j = randrange i + 1
-    [x[i], x[j]] = [x[j], x[i]]
+    tmp = x[i]; x[i] = x[j]; x[j] = tmp  # swap x[i], x[j]
   x
 
 exports.random = random
