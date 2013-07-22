@@ -21,12 +21,14 @@ randint = (start, stop) ->
   randrange(start, stop)
 
 
-sample = (array, number=1) ->
-  length = array.length
+sample = (array, number = 1, unique = false) ->
   random_sample = []
-  for num in [0...number]
-    value = choice(array)
-    random_sample.push(value)
+  if unique
+    while random_sample.length < number
+      value = choice(array)
+      random_sample.push(value) unless (random_sample.filter (x) -> x == value).length
+  else
+    random_sample.push(choice(array)) for num in [0...number]
   random_sample
 
 
